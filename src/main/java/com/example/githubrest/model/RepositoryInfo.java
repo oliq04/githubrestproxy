@@ -1,11 +1,10 @@
 package com.example.githubrest.model;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
 import lombok.*;
-import tools.jackson.databind.EnumNamingStrategies;
-import tools.jackson.databind.PropertyNamingStrategy;
-import tools.jackson.databind.annotation.JsonNaming;
-
 import java.time.LocalDate;
 
 @NoArgsConstructor
@@ -14,15 +13,23 @@ import java.time.LocalDate;
 @Builder
 @AllArgsConstructor
 @EqualsAndHashCode
-
+@Entity
 public class RepositoryInfo {
-    @JsonProperty(value = "full_name")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String fullName;
     private String description;
-    @JsonProperty(value = "clone_url")
     private String cloneUrl;
-    @JsonProperty(value = "stargazers_count")
     private Long stars;
-    @JsonProperty(value ="created_at")
     private LocalDate createdAt;
+
+    public RepositoryInfo update(RepositoryInfoCommand newInfo) {
+        this.fullName = newInfo.getFullName();
+        this.description = newInfo.getDescription();
+        this.cloneUrl = newInfo.getCloneUrl();
+        this.stars = newInfo.getStars();
+        this.createdAt = newInfo.getCreatedAt();
+        return this;
+    }
 }

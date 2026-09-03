@@ -1,0 +1,31 @@
+databaseChangeLog:
+  - changeSet:
+      id: 0
+      author: oliq04
+      changes:
+        - createTable:
+            tableName: REPOSITORY_INFO
+            columns:
+              - column:
+                  name: id
+                  type: bigint(255)
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+
+              - column:
+                  name: full_name
+                  type: varchar(128)
+              - column:
+                  name: description
+                  type: varchar(255)
+              - column:
+                  name: clone_url
+                  type: varchar(255)
+              - column:
+                  name: stars
+                  type: bigint(255)
+              - column:
+                  name: created_at
+                  type: date
+
