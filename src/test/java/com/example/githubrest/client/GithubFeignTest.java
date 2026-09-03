@@ -3,6 +3,7 @@ package com.example.githubrest.client;
 import com.example.githubrest.exception.RepositoryNotFoundException;
 import com.example.githubrest.model.RepositoryInfo;
 import com.example.githubrest.model.RepositoryInfoCommand;
+import com.example.githubrest.model.RepositoryInfoDto;
 import com.example.githubrest.repository.RepositoryInfoRepository;
 import com.github.tomakehurst.wiremock.WireMockServer;
 import feign.FeignException;
@@ -81,9 +82,19 @@ public class GithubFeignTest {
 
     @Test
     void createRepository_CorrectData_CreatedRepositoryReturned() throws Exception {
+        RepositoryInfo repositoryInfo = RepositoryInfo.builder()
+                .fullName("octocat/Hello-World")
+                .description("This your first repo!")
+                .cloneUrl("https://github.com/octocat/Hello-World.git")
+                .stars(80L)
+                .createdAt(LocalDate.of(2011,1,26))
+                .build();
+
         stubFor(get(urlEqualTo("/repos/oliq04/UserManagment")).willReturn(aResponse()
                 .withBodyFile("github_response.json")
                 .withHeader("Content-Type", "application/json")));
+
+        when(repositoryInfoRepository.save(any())).thenReturn(repositoryInfo);
 
         mockMvc.perform(MockMvcRequestBuilders.post("/repositories/{owner}/{repository-name}",
                         "oliq04", "UserManagment"))
