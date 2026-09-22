@@ -2,7 +2,6 @@ package com.example.githubrest.service;
 
 import com.example.githubrest.exception.RepositoryNotFoundException;
 import com.example.githubrest.client.GithubClient;
-import com.example.githubrest.mapper.RepositoryInfoMapper;
 import com.example.githubrest.model.RepositoryInfo;
 import com.example.githubrest.model.RepositoryInfoCommand;
 import com.example.githubrest.model.RepositoryInfoDto;
@@ -17,7 +16,6 @@ import org.springframework.stereotype.Service;
 @RequiredArgsConstructor
 public class GithubService {
 
-    private final RepositoryInfoMapper repositoryInfoMapper;
     private final RepositoryInfoRepository repositoryInfoRepository;
     private final GithubClient githubClient;
 
