@@ -43,7 +43,15 @@
             <artifactId>lombok</artifactId>
             <scope>provided</scope>
         </dependency>
+
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <scope>compile</scope>
+        </dependency>
     </dependencies>
+
+
 
     <dependencyManagement>
         <dependencies>
@@ -57,7 +65,8 @@
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-webmvc</artifactId>
+                <artifactId>spring-boot-starter-parent</artifactId>
+                <version>4.1.0</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

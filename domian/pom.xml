@@ -20,9 +20,21 @@
     <dependencies>
 
         <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
             <groupId>com.example</groupId>
             <artifactId>model</artifactId>
             <version>0.0.1-SNAPSHOT</version>
+            <scope>compile</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
             <scope>compile</scope>
         </dependency>
 
