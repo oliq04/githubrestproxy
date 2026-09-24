@@ -4,12 +4,13 @@ import com.example.githubrest.GithubRepositoryMapper;
 import com.example.githubrest.Repository;
 import com.example.githubrest.RepositoryProvider;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 import java.util.Optional;
 
-@Service
+@Component
 @RequiredArgsConstructor
-public class RepositoryImpl implements RepositoryProvider {
+public class RepositoryProviderImpl implements RepositoryProvider {
 
     private final GithubRepository githubRepository;
     private final GithubRepositoryMapper githubRepositoryMapper;

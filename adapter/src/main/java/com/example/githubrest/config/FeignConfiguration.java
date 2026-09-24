@@ -1,6 +1,6 @@
 package com.example.githubrest.config;
 
-import com.example.githubrest.feignclient.GithubErrorDecoder;
+import com.example.githubrest.client.GithubErrorDecoder;
 import feign.Logger;
 import feign.Retryer;
 import feign.codec.ErrorDecoder;

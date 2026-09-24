@@ -8,4 +8,5 @@ public interface GithubRepositoryMapper {
     Repository toPojo(GithubRepositoryInfoDto githubRepositoryInfoDto);
     GithubRepositoryInfoDto toDto(RepositoryEntity repository);
     Repository toPojo(RepositoryEntity repositoryEntity);
+    GithubRepositoryInfoDto toDtoFromPojo(Repository repository);
 }

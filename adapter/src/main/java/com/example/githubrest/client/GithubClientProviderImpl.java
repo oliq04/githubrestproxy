@@ -1,4 +1,4 @@
-package com.example.githubrest.feignclient;
+package com.example.githubrest.client;
 
 import com.example.githubrest.GithubClientProvider;
 import com.example.githubrest.GithubRepositoryInfoDto;
@@ -11,12 +11,12 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class GithubClientProviderImpl implements GithubClientProvider {
 
-    private final GithubClientFeign githubClientFeign;
+    private final GithubClient githubClient;
     private final GithubRepositoryMapper githubRepositoryMapper;
 
     @Override
     public Repository getRepositoryInfo(String owner, String repoName) {
-        GithubRepositoryInfoDto dto = githubClientFeign.getRepositoryInfo(owner, repoName);
+        GithubRepositoryInfoDto dto = githubClient.getRepositoryInfo(owner, repoName);
         return githubRepositoryMapper.toPojo(dto);
     }
 }

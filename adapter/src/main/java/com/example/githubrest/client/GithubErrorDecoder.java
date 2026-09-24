@@ -1,4 +1,4 @@
-package com.example.githubrest.feignclient;
+package com.example.githubrest.client;
 
 import feign.FeignException;
 import feign.Response;

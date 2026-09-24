@@ -24,15 +24,15 @@ public class GithubService {
 
     public Repository getLocalRepository(String owner, String repositoryName) {
         log.info("Getting local repository from database.");
-        return repositoryProvider.findRepositoryInfoByFullName(owner + "/" +
-                repositoryName).orElseThrow(() -> new RepositoryNotFoundException("Repository not fund", 404));
+        return repositoryProvider.findRepositoryInfoByFullName(owner + "/" + repositoryName)
+                .orElseThrow(() -> new RepositoryNotFoundException("Repository not fund", 404));
     }
 
     public Repository updateRepository(String owner, String repositoryName) {
         Repository repositoryInfoCommand = githubClient.getRepositoryInfo(owner, repositoryName);
         log.info("Finding repository in database.");
-        Repository repositoryInfo = repositoryProvider.findRepositoryInfoByFullName(owner + "/" +
-                repositoryName).orElseThrow(() -> new RepositoryNotFoundException("Repository not fund", 404));
+        Repository repositoryInfo = repositoryProvider.findRepositoryInfoByFullName(owner + "/" + repositoryName)
+                .orElseThrow(() -> new RepositoryNotFoundException("Repository not fund", 404));
         log.info("Repository found, updating details.");
         repositoryInfo.update(repositoryInfoCommand);
         log.info("Saving repository '{}' in database.", repositoryInfoCommand.getFullName());
@@ -42,9 +42,9 @@ public class GithubService {
     }
 
     public void deleteLocalRepositoryInfo(String owner, String repositoryName) {
-        Repository repository = repositoryProvider.findRepositoryInfoByFullName(owner + "/" +
-                repositoryName).orElseThrow(() -> new RepositoryNotFoundException("Repository not fund", 404));
-        repositoryProvider.delete(repositoryName);
+        Repository repository = repositoryProvider.findRepositoryInfoByFullName(owner + "/" + repositoryName)
+                .orElseThrow(() -> new RepositoryNotFoundException("Repository not fund", 404));
+        repositoryProvider.delete(owner + "/" + repositoryName);
         log.info("Repository deleted successfully.");
     }
 }
